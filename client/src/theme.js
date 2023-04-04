@@ -46,6 +46,8 @@ export const themeSettings = (mode) => {
       background: {
         default: colorTokens.grey[10],
         alt: colorTokens.grey[0],
+        primary:
+          "radial-gradient(68.13% 100% at 100% 0, #dd5ce5 0, rgba(221, 92, 229, 0) 100%), linear-gradient(95.52deg, #2e95d3, rgba(46, 149, 211, 0)),linear-gradient(0deg, #5436da, #5436da), #6e6e80",
       },
     },
     typography: {

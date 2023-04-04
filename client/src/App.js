@@ -10,16 +10,16 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import "./App.css";
 import Paragraph from "./pages/Paragraph";
 import ChatBot from "./pages/Chat";
 import JsConverter from "./pages/JSConverter";
 import Summary from "./pages/Summary";
 import ScifiImage from "./pages/ScifiImage";
+import Protected from "./pages/Protected";
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings()), []);
-
+  const loggedIn = JSON.parse(localStorage.getItem("authToken"));
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -30,11 +30,46 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/summary" element={<Summary />} />
-          <Route path="/paragraph" element={<Paragraph />} />
-          <Route path="/js-converter" element={<JsConverter />} />
-          <Route path="/chat" element={<ChatBot />} />
-          <Route path="/scifi-image" element={<ScifiImage />} />
+          <Route
+            path="/summary"
+            element={
+              <Protected isLoggedIn={loggedIn}>
+                <Summary />
+              </Protected>
+            }
+          />
+          <Route
+            path="/paragraph"
+            element={
+              <Protected isLoggedIn={loggedIn}>
+                <Paragraph />
+              </Protected>
+            }
+          />
+          <Route
+            path="/js-converter"
+            element={
+              <Protected isLoggedIn={loggedIn}>
+                <JsConverter />
+              </Protected>
+            }
+          />
+          <Route
+            path="/chat"
+            element={
+              <Protected isLoggedIn={loggedIn}>
+                <ChatBot />
+              </Protected>
+            }
+          />
+          <Route
+            path="/scifi-image"
+            element={
+              <Protected isLoggedIn={loggedIn}>
+                <ScifiImage />
+              </Protected>
+            }
+          />
         </Routes>
       </ThemeProvider>
     </>

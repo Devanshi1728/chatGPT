@@ -3,10 +3,10 @@ dotenv.config();
 
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
+  organization: process.env.ORG_KEY,
   apiKey: process.env.OPENAI_API_SECRET,
 });
 const openai = new OpenAIApi(configuration);
-console.log("openaI-----------------------------", openai);
 
 exports.summaryController = async (req, res) => {
   try {
@@ -18,13 +18,11 @@ exports.summaryController = async (req, res) => {
       temperature: 0.5,
     });
     if (data) {
-      console.log("data---", data);
       if (data.choices[0].text) {
         return res.status(200).json(data.choices[0].text);
       }
     }
   } catch (err) {
-    console.log("ERROR----------", err.message);
     return res.status(404).json({
       message: err.message,
     });
@@ -46,7 +44,6 @@ exports.paragraphController = async (req, res) => {
       }
     }
   } catch (err) {
-    console.log("ERRORRRRR-------", err);
     return res.status(404).json({
       message: err.message,
     });
@@ -63,13 +60,11 @@ exports.chatbotController = async () => {
       temperature: 0.5,
     });
     if (data) {
-      console.log("data---", data);
       if (data.choices[0].text) {
         return res.status(200).json(data.choices[0].text);
       }
     }
   } catch (error) {
-    console.log(err);
     return res.status(404).json({
       message: err.message,
     });
@@ -86,13 +81,11 @@ exports.jsConverterController = async () => {
       temperature: 0.25,
     });
     if (data) {
-      console.log("data---", data);
       if (data.choices[0].text) {
         return res.status(200).json(data.choices[0].text);
       }
     }
   } catch (error) {
-    console.log(err);
     return res.status(404).json({
       message: err.message,
     });
@@ -108,13 +101,11 @@ exports.imageController = async () => {
       size: "512x512",
     });
     if (data) {
-      console.log("data---", data);
       if (data) {
         return res.status(200).json(data.data[0].url);
       }
     }
   } catch (error) {
-    console.log(err);
     return res.status(404).json({
       message: err.message,
     });

@@ -1,12 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const theme = useTheme();
   const loggedIn = JSON.parse(localStorage.getItem("authToken"));
   const navigate = useNavigate();
 
@@ -17,7 +16,7 @@ const Navbar = () => {
       navigate("/login");
       toast.success("Logout successfully");
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
 
@@ -25,12 +24,10 @@ const Navbar = () => {
     <Box
       width="100%"
       p="1rem 6%"
-      backgroundColor={theme.palette.background.alt}
       textAlign="center"
       sx={{
         boxShadow: 3,
         mb: 2,
-        bgcolor: "purple",
         color: "white",
       }}
     >

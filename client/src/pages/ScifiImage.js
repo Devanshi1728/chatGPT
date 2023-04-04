@@ -27,10 +27,8 @@ const ScifiImage = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post("/api/v1/openai/scifi-image", { text });
-      console.log(data);
       setImage(data);
     } catch (err) {
-      console.log(error);
       if (err.response.data.error) {
         setError(err.response.data.error);
       } else if (err.message) {
@@ -50,7 +48,7 @@ const ScifiImage = () => {
       sx={{ boxShadow: 5 }}
       backgroundColor={theme.palette.background.alt}
     >
-      <Collapse in={error}>
+      <Collapse in={error.length ? true : false}>
         <Alert severity="error" sx={{ mb: 2 }}>
           {error}
         </Alert>
@@ -76,7 +74,7 @@ const ScifiImage = () => {
           fullWidth
           variant="contained"
           size="large"
-          sx={{ color: "white", mt: 2 }}
+          sx={{ color: "white", mt: 2, backgroundColor: "rgb(11, 34, 106)" }}
         >
           Submit
         </Button>

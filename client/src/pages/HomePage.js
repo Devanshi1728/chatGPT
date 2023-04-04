@@ -78,7 +78,7 @@ const Homepage = () => {
             AI ChatBot
           </Typography>
           <Card
-            onClick={() => navigate("/chatbot")}
+            onClick={() => navigate("/chat")}
             sx={{
               boxShadow: 2,
               borderRadius: 5,

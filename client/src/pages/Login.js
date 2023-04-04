@@ -28,7 +28,6 @@ const Login = () => {
       localStorage.setItem("authToken", true);
       navigate("/");
     } catch (err) {
-      console.log(error);
       if (err.response.data.error) {
         setError(err.response.data.error);
       } else if (err.message) {

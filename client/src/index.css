@@ -6,7 +6,26 @@
 
 body {
   font-family: "roboto", sans-serif;
+  background: radial-gradient(
+      68.13% 100% at 100% 0,
+      #dd5ce5 0,
+      rgba(221, 92, 229, 0) 100%
+    ),
+    linear-gradient(95.52deg, #2e95d3, rgba(46, 149, 211, 0)),
+    linear-gradient(0deg, #5436da, #5436da), #6e6e80;
 }
+
 a {
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+a:hover {
+  color: greenyellow !important;
+}
+
+a.active {
   color: white;
 }
